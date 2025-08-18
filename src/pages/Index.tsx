@@ -1,24 +1,20 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import heroBackground from "@/assets/hero-background.jpg";
+import featuredProperty1 from "@/assets/featured-property-1.jpg";
+import featuredProperty2 from "@/assets/featured-property-2.jpg";
+import featuredProperty3 from "@/assets/featured-property-3.jpg";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
       {/* Hero Section with Background Video */}
       <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Video */}
-        <video
-          autoPlay
-          muted
-          loop
-          className="absolute inset-0 w-full h-full object-cover"
-        >
-          <source
-            src="https://videos.pexels.com/video-files/8816063/8816063-hd_1920_1080_25fps.mp4"
-            type="video/mp4"
-          />
-          Your browser does not support the video tag.
-        </video>
+        {/* Background Image with parallax effect */}
+        <div
+          className="absolute inset-0 w-full h-full bg-cover bg-center bg-fixed"
+          style={{ backgroundImage: `url(${heroBackground})` }}
+        />
         
         {/* Overlay */}
         <div className="absolute inset-0 bg-black/50" />
@@ -60,21 +56,21 @@ const Index = () => {
             {[
               {
                 id: 1,
-                image: "/src/assets/featured-property-1.jpg",
+                image: featuredProperty1,
                 title: "Luxury Villa with Pool",
                 price: "$2,850,000",
                 location: "Beverly Hills, CA"
               },
               {
                 id: 2,
-                image: "/src/assets/featured-property-2.jpg", 
+                image: featuredProperty2, 
                 title: "Modern City Apartment",
                 price: "$1,250,000",
                 location: "Downtown, NY"
               },
               {
                 id: 3,
-                image: "/src/assets/featured-property-3.jpg",
+                image: featuredProperty3,
                 title: "Beachfront Penthouse",
                 price: "$3,200,000",
                 location: "Malibu, CA"

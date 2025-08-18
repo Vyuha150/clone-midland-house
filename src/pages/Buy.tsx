@@ -5,6 +5,9 @@ import { Card } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Slider } from "@/components/ui/slider";
 import { Search, MapPin, Building, Bed, Square, DollarSign } from "lucide-react";
+import property1 from "@/assets/property1.jpg";
+import property2 from "@/assets/property2.jpg";
+import property3 from "@/assets/property3.jpg";
 
 const Buy = () => {
   const [priceRange, setPriceRange] = useState([0]);
@@ -126,7 +129,7 @@ const Buy = () => {
             <Card className="overflow-hidden hover-scale">
               <div className="aspect-video relative">
                 <img
-                  src="/src/assets/property1.jpg"
+                  src={property1}
                   alt="Modern luxury house"
                   className="w-full h-full object-cover"
                 />
@@ -163,7 +166,7 @@ const Buy = () => {
             <Card className="overflow-hidden hover-scale">
               <div className="aspect-video relative">
                 <img
-                  src="/src/assets/property2.jpg"
+                  src={property2}
                   alt="Elegant villa with pool"
                   className="w-full h-full object-cover"
                 />
@@ -200,7 +203,7 @@ const Buy = () => {
             <Card className="overflow-hidden hover-scale">
               <div className="aspect-video relative">
                 <img
-                  src="/src/assets/property3.jpg"
+                  src={property3}
                   alt="Contemporary apartment"
                   className="w-full h-full object-cover"
                 />
