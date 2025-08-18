@@ -25,17 +25,17 @@ const Index = () => {
         
         {/* Logo and Content */}
         <div className="relative z-10 text-center text-white px-4 max-w-4xl">
-          <div className="mb-8">
+          <div className="mb-12">
             <img 
               src="/lovable-uploads/674c43b8-f787-4efc-831c-9e061904f904.png"
               alt="Mid-Land Real Estate Services"
-              className="h-24 w-auto mx-auto mb-6 animate-fade-in"
+              className="h-48 md:h-64 w-auto mx-auto mb-8 animate-fade-in drop-shadow-2xl"
             />
           </div>
           
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-fade-in">
+          <p className="text-lg md:text-xl font-medium mb-8 animate-fade-in text-gray-100">
             Luxury living redefined. Find your perfect home with us.
-          </h1>
+          </p>
           
           <div className="mt-12 animate-fade-in">
             <Button size="lg" className="px-8 py-6 text-lg hover-scale" asChild>
@@ -55,11 +55,42 @@ const Index = () => {
             </p>
           </div>
 
-          {/* Property Grid Placeholder */}
+          {/* Property Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[1, 2, 3].map((i) => (
-              <div key={i} className="bg-gray-100 rounded-lg h-64 flex items-center justify-center">
-                <p className="text-gray-500">Property {i}</p>
+            {[
+              {
+                id: 1,
+                image: "/src/assets/featured-property-1.jpg",
+                title: "Luxury Villa with Pool",
+                price: "$2,850,000",
+                location: "Beverly Hills, CA"
+              },
+              {
+                id: 2,
+                image: "/src/assets/featured-property-2.jpg", 
+                title: "Modern City Apartment",
+                price: "$1,250,000",
+                location: "Downtown, NY"
+              },
+              {
+                id: 3,
+                image: "/src/assets/featured-property-3.jpg",
+                title: "Beachfront Penthouse",
+                price: "$3,200,000",
+                location: "Malibu, CA"
+              }
+            ].map((property) => (
+              <div key={property.id} className="bg-white rounded-lg shadow-lg overflow-hidden hover-scale">
+                <img 
+                  src={property.image} 
+                  alt={property.title}
+                  className="w-full h-48 object-cover"
+                />
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">{property.title}</h3>
+                  <p className="text-primary text-2xl font-bold mb-2">{property.price}</p>
+                  <p className="text-gray-600">{property.location}</p>
+                </div>
               </div>
             ))}
           </div>

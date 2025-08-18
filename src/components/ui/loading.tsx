@@ -28,6 +28,13 @@ export const PageLoading = () => {
   return (
     <div className="min-h-screen bg-background flex items-center justify-center">
       <div className="text-center">
+        <div className="mb-8">
+          <img 
+            src="/lovable-uploads/674c43b8-f787-4efc-831c-9e061904f904.png"
+            alt="Mid-Land Real Estate Services"
+            className="h-24 w-auto mx-auto animate-pulse"
+          />
+        </div>
         <Loading size="lg" />
         <p className="mt-4 text-muted-foreground">Loading...</p>
       </div>

@@ -17,16 +17,16 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="w-full bg-white shadow-sm border-b">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav className="w-full bg-white shadow-lg border-b relative">
+      <div className="absolute inset-0 bg-gradient-to-r from-white via-gray-50 to-white rounded-b-[50px]"></div>
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <img 
-              src="/lovable-uploads/674c43b8-f787-4efc-831c-9e061904f904.png"
-              alt="Mid-Land Real Estate Services"
-              className="h-10 w-auto"
-            />
+          {/* Logo/Brand */}
+          <Link to="/" className="flex items-center space-x-3">
+            <span className="text-2xl font-bold">
+              <span className="text-gray-800">Midland</span>
+              <span className="text-primary ml-2">Real-Estate</span>
+            </span>
           </Link>
 
           {/* Navigation Links */}
