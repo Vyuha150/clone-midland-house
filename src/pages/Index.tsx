@@ -4,29 +4,45 @@ import { Link } from "react-router-dom";
 const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
-      {/* Hero Section */}
-      <div className="relative min-h-screen flex items-center justify-center">
-        <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-black/30" />
+      {/* Hero Section with Background Video */}
+      <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Background Video */}
+        <video
+          autoPlay
+          muted
+          loop
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source
+            src="https://videos.pexels.com/video-files/8816063/8816063-hd_1920_1080_25fps.mp4"
+            type="video/mp4"
+          />
+          Your browser does not support the video tag.
+        </video>
         
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/50" />
+        
+        {/* Logo and Content */}
         <div className="relative z-10 text-center text-white px-4 max-w-4xl">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">
+          <div className="mb-8">
+            <img 
+              src="/lovable-uploads/674c43b8-f787-4efc-831c-9e061904f904.png"
+              alt="Mid-Land Real Estate Services"
+              className="h-24 w-auto mx-auto mb-6 animate-fade-in"
+            />
+          </div>
+          
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-fade-in">
             Luxury living redefined. Find your perfect home with us.
           </h1>
           
-          <div className="mt-12">
-            <Button size="lg" className="px-8 py-6 text-lg" asChild>
+          <div className="mt-12 animate-fade-in">
+            <Button size="lg" className="px-8 py-6 text-lg hover-scale" asChild>
               <Link to="/buy">Explore Properties</Link>
             </Button>
           </div>
         </div>
-
-        {/* Background overlay for better text readability */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
-          }}
-        />
       </div>
 
       {/* Featured Properties Section */}

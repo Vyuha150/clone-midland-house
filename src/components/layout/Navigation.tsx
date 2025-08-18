@@ -22,10 +22,11 @@ const Navigation = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <span className="text-xl font-bold text-gray-900">
-              Midland{" "}
-              <span className="text-primary">Real-Estate</span>
-            </span>
+            <img 
+              src="/lovable-uploads/674c43b8-f787-4efc-831c-9e061904f904.png"
+              alt="Mid-Land Real Estate Services"
+              className="h-10 w-auto"
+            />
           </Link>
 
           {/* Navigation Links */}

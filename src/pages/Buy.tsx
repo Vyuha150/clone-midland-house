@@ -114,9 +114,132 @@ const Buy = () => {
           </Button>
         </div>
 
-        {/* Results would go here */}
-        <div className="mt-12 text-center text-muted-foreground">
-          <p>No properties found. Try adjusting your search criteria.</p>
+        {/* Properties Grid */}
+        <div className="mt-12">
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-2xl font-bold">Available Properties</h2>
+            <p className="text-muted-foreground">Showing 3 results</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Property 1 */}
+            <Card className="overflow-hidden hover-scale">
+              <div className="aspect-video relative">
+                <img
+                  src="/src/assets/property1.jpg"
+                  alt="Modern luxury house"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute top-4 left-4">
+                  <span className="bg-primary text-primary-foreground px-2 py-1 rounded text-sm font-medium">
+                    For Sale
+                  </span>
+                </div>
+                <div className="absolute top-4 right-4">
+                  <span className="bg-white/90 text-foreground px-2 py-1 rounded text-sm font-medium">
+                    ₹2.5 Cr
+                  </span>
+                </div>
+              </div>
+              <div className="p-4">
+                <h3 className="font-semibold text-lg mb-2">Modern Luxury Villa</h3>
+                <p className="text-muted-foreground text-sm mb-3">
+                  Beverly Hills, CA • 4 BHK • 3500 sq.ft
+                </p>
+                <div className="flex justify-between items-center">
+                  <div className="flex gap-4 text-sm text-muted-foreground">
+                    <span>🛏️ 4</span>
+                    <span>🚿 3</span>
+                    <span>🚗 2</span>
+                  </div>
+                  <Button variant="outline" size="sm">
+                    View Details
+                  </Button>
+                </div>
+              </div>
+            </Card>
+
+            {/* Property 2 */}
+            <Card className="overflow-hidden hover-scale">
+              <div className="aspect-video relative">
+                <img
+                  src="/src/assets/property2.jpg"
+                  alt="Elegant villa with pool"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute top-4 left-4">
+                  <span className="bg-primary text-primary-foreground px-2 py-1 rounded text-sm font-medium">
+                    For Sale
+                  </span>
+                </div>
+                <div className="absolute top-4 right-4">
+                  <span className="bg-white/90 text-foreground px-2 py-1 rounded text-sm font-medium">
+                    ₹3.2 Cr
+                  </span>
+                </div>
+              </div>
+              <div className="p-4">
+                <h3 className="font-semibold text-lg mb-2">Elegant Villa with Pool</h3>
+                <p className="text-muted-foreground text-sm mb-3">
+                  Miami, FL • 5 BHK • 4200 sq.ft
+                </p>
+                <div className="flex justify-between items-center">
+                  <div className="flex gap-4 text-sm text-muted-foreground">
+                    <span>🛏️ 5</span>
+                    <span>🚿 4</span>
+                    <span>🚗 3</span>
+                  </div>
+                  <Button variant="outline" size="sm">
+                    View Details
+                  </Button>
+                </div>
+              </div>
+            </Card>
+
+            {/* Property 3 */}
+            <Card className="overflow-hidden hover-scale">
+              <div className="aspect-video relative">
+                <img
+                  src="/src/assets/property3.jpg"
+                  alt="Contemporary apartment"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute top-4 left-4">
+                  <span className="bg-secondary text-secondary-foreground px-2 py-1 rounded text-sm font-medium">
+                    For Rent
+                  </span>
+                </div>
+                <div className="absolute top-4 right-4">
+                  <span className="bg-white/90 text-foreground px-2 py-1 rounded text-sm font-medium">
+                    ₹85,000/mo
+                  </span>
+                </div>
+              </div>
+              <div className="p-4">
+                <h3 className="font-semibold text-lg mb-2">Contemporary Apartment</h3>
+                <p className="text-muted-foreground text-sm mb-3">
+                  Downtown NYC • 3 BHK • 2100 sq.ft
+                </p>
+                <div className="flex justify-between items-center">
+                  <div className="flex gap-4 text-sm text-muted-foreground">
+                    <span>🛏️ 3</span>
+                    <span>🚿 2</span>
+                    <span>🚗 1</span>
+                  </div>
+                  <Button variant="outline" size="sm">
+                    View Details
+                  </Button>
+                </div>
+              </div>
+            </Card>
+          </div>
+
+          {/* Load More */}
+          <div className="text-center mt-8">
+            <Button variant="outline" size="lg">
+              Load More Properties
+            </Button>
+          </div>
         </div>
       </div>
     </div>
