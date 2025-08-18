@@ -25,7 +25,7 @@ const Index = () => {
             <img 
               src="/lovable-uploads/674c43b8-f787-4efc-831c-9e061904f904.png"
               alt="Mid-Land Real Estate Services"
-              className="h-48 md:h-64 w-auto mx-auto mb-8 animate-fade-in drop-shadow-2xl"
+              className="h-96 md:h-[32rem] w-auto mx-auto mb-8 animate-fade-in drop-shadow-2xl"
             />
           </div>
           
