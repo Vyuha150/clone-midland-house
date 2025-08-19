@@ -27,8 +27,25 @@ const Sell = () => {
     bedrooms: "",
     bathrooms: "",
     area: "",
-    furnished: "",
-    flooring: "",
+    areaUnit: "sq_yard",
+    dimensionsLength: "",
+    dimensionsWidth: "",
+    dimensionsUnit: "feet",
+    carpetArea: "",
+    carpetAreaUnit: "sq_ft",
+    builtUpArea: "",
+    builtUpAreaUnit: "sq_ft",
+    furnished: "unfurnished",
+    flooring: "tiles",
+    boundaryWall: "",
+    locationMapUrl: "",
+    plotArea: "",
+    plotAreaUnit: "sq_yard",
+    plotLength: "",
+    plotWidth: "",
+    plotFacing: "north",
+    plotBoundaryWall: "",
+    bhk: "",
     facing: "",
     
     // Amenities
@@ -223,104 +240,273 @@ const Sell = () => {
               <CardTitle className="text-xl text-primary">Property Details</CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {/* Area with unit dropdown */}
+              <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="bedrooms">Bedrooms</Label>
-                  <Select onValueChange={(value) => handleInputChange("bedrooms", value)}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="1">1 BHK</SelectItem>
-                      <SelectItem value="2">2 BHK</SelectItem>
-                      <SelectItem value="3">3 BHK</SelectItem>
-                      <SelectItem value="4">4 BHK</SelectItem>
-                      <SelectItem value="5">5+ BHK</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="bathrooms">Bathrooms</Label>
-                  <Select onValueChange={(value) => handleInputChange("bathrooms", value)}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="1">1</SelectItem>
-                      <SelectItem value="2">2</SelectItem>
-                      <SelectItem value="3">3</SelectItem>
-                      <SelectItem value="4">4</SelectItem>
-                      <SelectItem value="5">5+</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="area">Area (sq.ft)</Label>
+                  <Label htmlFor="area">Area*</Label>
                   <Input
                     id="area"
-                    placeholder="1200"
+                    placeholder="Enter area"
                     value={formData.area}
                     onChange={(e) => handleInputChange("area", e.target.value)}
                   />
                 </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <Label>Furnished Status</Label>
-                  <RadioGroup
-                    value={formData.furnished}
-                    onValueChange={(value) => handleInputChange("furnished", value)}
-                    className="grid grid-cols-1 gap-3"
-                  >
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="furnished" id="furnished" />
-                      <Label htmlFor="furnished">Furnished</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="semi-furnished" id="semi-furnished" />
-                      <Label htmlFor="semi-furnished">Semi-Furnished</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="unfurnished" id="unfurnished" />
-                      <Label htmlFor="unfurnished">Unfurnished</Label>
-                    </div>
-                  </RadioGroup>
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="facing">Facing</Label>
-                  <Select onValueChange={(value) => handleInputChange("facing", value)}>
+                  <Label>&nbsp;</Label>
+                  <Select value={formData.areaUnit} onValueChange={(value) => handleInputChange("areaUnit", value)}>
                     <SelectTrigger>
-                      <SelectValue placeholder="Select facing" />
+                      <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="north">North</SelectItem>
-                      <SelectItem value="south">South</SelectItem>
-                      <SelectItem value="east">East</SelectItem>
-                      <SelectItem value="west">West</SelectItem>
-                      <SelectItem value="north-east">North-East</SelectItem>
-                      <SelectItem value="north-west">North-West</SelectItem>
-                      <SelectItem value="south-east">South-East</SelectItem>
-                      <SelectItem value="south-west">South-West</SelectItem>
+                      <SelectItem value="sq_yard">Sq. Yard</SelectItem>
+                      <SelectItem value="sq_ft">Sq. Ft</SelectItem>
+                      <SelectItem value="sq_meter">Sq. Meter</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
               </div>
 
+              {/* Dimensions (Length x Width) */}
               <div className="space-y-2">
-                <Label htmlFor="flooring">Flooring</Label>
-                <Select onValueChange={(value) => handleInputChange("flooring", value)}>
+                <Label>Dimensions (Length x Width)*</Label>
+                <div className="grid grid-cols-3 gap-4">
+                  <Input
+                    placeholder="Length"
+                    value={formData.dimensionsLength}
+                    onChange={(e) => handleInputChange("dimensionsLength", e.target.value)}
+                  />
+                  <Input
+                    placeholder="Width"
+                    value={formData.dimensionsWidth}
+                    onChange={(e) => handleInputChange("dimensionsWidth", e.target.value)}
+                  />
+                  <Select value={formData.dimensionsUnit} onValueChange={(value) => handleInputChange("dimensionsUnit", value)}>
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="feet">Feet</SelectItem>
+                      <SelectItem value="meter">Meter</SelectItem>
+                      <SelectItem value="yard">Yard</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+
+              {/* Carpet Area */}
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="carpetArea">Carpet Area*</Label>
+                  <Input
+                    id="carpetArea"
+                    placeholder="Enter carpet area"
+                    value={formData.carpetArea}
+                    onChange={(e) => handleInputChange("carpetArea", e.target.value)}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label>&nbsp;</Label>
+                  <Select value={formData.carpetAreaUnit} onValueChange={(value) => handleInputChange("carpetAreaUnit", value)}>
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="sq_ft">Sq. Ft</SelectItem>
+                      <SelectItem value="sq_yard">Sq. Yard</SelectItem>
+                      <SelectItem value="sq_meter">Sq. Meter</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+
+              {/* Built-up Area */}
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="builtUpArea">Built-up Area*</Label>
+                  <Input
+                    id="builtUpArea"
+                    placeholder="Enter built-up area"
+                    value={formData.builtUpArea}
+                    onChange={(e) => handleInputChange("builtUpArea", e.target.value)}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label>&nbsp;</Label>
+                  <Select value={formData.builtUpAreaUnit} onValueChange={(value) => handleInputChange("builtUpAreaUnit", value)}>
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="sq_ft">Sq. Ft</SelectItem>
+                      <SelectItem value="sq_yard">Sq. Yard</SelectItem>
+                      <SelectItem value="sq_meter">Sq. Meter</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+
+              {/* Furnishing Status */}
+              <div className="space-y-2">
+                <Label>Furnishing Status*</Label>
+                <Select value={formData.furnished} onValueChange={(value) => handleInputChange("furnished", value)}>
                   <SelectTrigger>
-                    <SelectValue placeholder="Select flooring type" />
+                    <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="marble">Marble</SelectItem>
+                    <SelectItem value="unfurnished">Unfurnished</SelectItem>
+                    <SelectItem value="semi-furnished">Semi-Furnished</SelectItem>
+                    <SelectItem value="furnished">Furnished</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              {/* Flooring */}
+              <div className="space-y-2">
+                <Label>Flooring*</Label>
+                <Select value={formData.flooring} onValueChange={(value) => handleInputChange("flooring", value)}>
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
                     <SelectItem value="tiles">Tiles</SelectItem>
+                    <SelectItem value="marble">Marble</SelectItem>
                     <SelectItem value="wooden">Wooden</SelectItem>
                     <SelectItem value="granite">Granite</SelectItem>
                     <SelectItem value="concrete">Concrete</SelectItem>
+                    <SelectItem value="ceramic">Ceramic</SelectItem>
                   </SelectContent>
                 </Select>
+              </div>
+
+              {/* Boundary Wall */}
+              <div className="space-y-2">
+                <Label>Boundary Wall</Label>
+                <RadioGroup
+                  value={formData.boundaryWall}
+                  onValueChange={(value) => handleInputChange("boundaryWall", value)}
+                  className="flex gap-6"
+                >
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="yes" id="boundary-yes" />
+                    <Label htmlFor="boundary-yes">Yes</Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="no" id="boundary-no" />
+                    <Label htmlFor="boundary-no">No</Label>
+                  </div>
+                </RadioGroup>
+              </div>
+
+              {/* Location Map URL */}
+              <div className="space-y-2">
+                <Label htmlFor="locationMapUrl">Location Map URL (Google Maps Embed URL)</Label>
+                <Input
+                  id="locationMapUrl"
+                  placeholder="Enter Google Maps embed URL"
+                  value={formData.locationMapUrl}
+                  onChange={(e) => handleInputChange("locationMapUrl", e.target.value)}
+                />
+                <p className="text-xs text-muted-foreground">
+                  Go to Google Maps, click Share, select Embed map, and copy the URL from the iframe src attribute
+                </p>
+              </div>
+
+              {/* Plot Area */}
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="plotArea">Plot Area*</Label>
+                  <Input
+                    id="plotArea"
+                    placeholder="Enter plot area"
+                    value={formData.plotArea}
+                    onChange={(e) => handleInputChange("plotArea", e.target.value)}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label>&nbsp;</Label>
+                  <Select value={formData.plotAreaUnit} onValueChange={(value) => handleInputChange("plotAreaUnit", value)}>
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="sq_yard">Sq. Yard</SelectItem>
+                      <SelectItem value="sq_ft">Sq. Ft</SelectItem>
+                      <SelectItem value="sq_meter">Sq. Meter</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+
+              {/* Plot Length & Width */}
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="plotLength">Plot Length*</Label>
+                  <Input
+                    id="plotLength"
+                    placeholder="Enter plot length"
+                    value={formData.plotLength}
+                    onChange={(e) => handleInputChange("plotLength", e.target.value)}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="plotWidth">Plot Width*</Label>
+                  <Input
+                    id="plotWidth"
+                    placeholder="Enter plot width"
+                    value={formData.plotWidth}
+                    onChange={(e) => handleInputChange("plotWidth", e.target.value)}
+                  />
+                </div>
+              </div>
+
+              {/* Plot Facing */}
+              <div className="space-y-2">
+                <Label>Plot Facing*</Label>
+                <Select value={formData.plotFacing} onValueChange={(value) => handleInputChange("plotFacing", value)}>
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="north">North</SelectItem>
+                    <SelectItem value="south">South</SelectItem>
+                    <SelectItem value="east">East</SelectItem>
+                    <SelectItem value="west">West</SelectItem>
+                    <SelectItem value="north-east">North-East</SelectItem>
+                    <SelectItem value="north-west">North-West</SelectItem>
+                    <SelectItem value="south-east">South-East</SelectItem>
+                    <SelectItem value="south-west">South-West</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              {/* Plot Boundary Wall */}
+              <div className="space-y-2">
+                <Label>Plot Boundary Wall</Label>
+                <RadioGroup
+                  value={formData.plotBoundaryWall}
+                  onValueChange={(value) => handleInputChange("plotBoundaryWall", value)}
+                  className="flex gap-6"
+                >
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="yes" id="plot-boundary-yes" />
+                    <Label htmlFor="plot-boundary-yes">Yes</Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="no" id="plot-boundary-no" />
+                    <Label htmlFor="plot-boundary-no">No</Label>
+                  </div>
+                </RadioGroup>
+              </div>
+
+              {/* BHK */}
+              <div className="space-y-2">
+                <Label htmlFor="bhk">BHK*</Label>
+                <Input
+                  id="bhk"
+                  placeholder="Enter BHK"
+                  value={formData.bhk}
+                  onChange={(e) => handleInputChange("bhk", e.target.value)}
+                />
               </div>
             </CardContent>
           </Card>
