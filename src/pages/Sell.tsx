@@ -240,6 +240,42 @@ const Sell = () => {
               <CardTitle className="text-xl text-primary">Property Details</CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
+              {/* Bedrooms and Bathrooms */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <Label htmlFor="bedrooms">Number of Bedrooms*</Label>
+                  <Select value={formData.bedrooms} onValueChange={(value) => handleInputChange("bedrooms", value)}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select bedrooms" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="1">1 Bedroom</SelectItem>
+                      <SelectItem value="2">2 Bedrooms</SelectItem>
+                      <SelectItem value="3">3 Bedrooms</SelectItem>
+                      <SelectItem value="4">4 Bedrooms</SelectItem>
+                      <SelectItem value="5">5 Bedrooms</SelectItem>
+                      <SelectItem value="6+">6+ Bedrooms</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="bathrooms">Number of Bathrooms*</Label>
+                  <Select value={formData.bathrooms} onValueChange={(value) => handleInputChange("bathrooms", value)}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select bathrooms" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="1">1 Bathroom</SelectItem>
+                      <SelectItem value="2">2 Bathrooms</SelectItem>
+                      <SelectItem value="3">3 Bathrooms</SelectItem>
+                      <SelectItem value="4">4 Bathrooms</SelectItem>
+                      <SelectItem value="5">5 Bathrooms</SelectItem>
+                      <SelectItem value="6+">6+ Bathrooms</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+
               {/* Area with unit dropdown */}
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
@@ -258,9 +294,23 @@ const Sell = () => {
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
+                      <SelectItem value="perch">Perch</SelectItem>
                       <SelectItem value="sq_yard">Sq. Yard</SelectItem>
-                      <SelectItem value="sq_ft">Sq. Ft</SelectItem>
                       <SelectItem value="sq_meter">Sq. Meter</SelectItem>
+                      <SelectItem value="acres">Acres</SelectItem>
+                      <SelectItem value="marla">Marla</SelectItem>
+                      <SelectItem value="cents">Cents</SelectItem>
+                      <SelectItem value="bigha">Bigha</SelectItem>
+                      <SelectItem value="kottah">Kottah</SelectItem>
+                      <SelectItem value="kanal">Kanal</SelectItem>
+                      <SelectItem value="grounds">Grounds</SelectItem>
+                      <SelectItem value="ares">Ares</SelectItem>
+                      <SelectItem value="biswa">Biswa</SelectItem>
+                      <SelectItem value="guntha">Guntha</SelectItem>
+                      <SelectItem value="aankadam">Aankadam</SelectItem>
+                      <SelectItem value="hectares">Hectares</SelectItem>
+                      <SelectItem value="rood">Rood</SelectItem>
+                      <SelectItem value="chataks">Chataks</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -311,9 +361,23 @@ const Sell = () => {
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="sq_ft">Sq. Ft</SelectItem>
+                      <SelectItem value="perch">Perch</SelectItem>
                       <SelectItem value="sq_yard">Sq. Yard</SelectItem>
                       <SelectItem value="sq_meter">Sq. Meter</SelectItem>
+                      <SelectItem value="acres">Acres</SelectItem>
+                      <SelectItem value="marla">Marla</SelectItem>
+                      <SelectItem value="cents">Cents</SelectItem>
+                      <SelectItem value="bigha">Bigha</SelectItem>
+                      <SelectItem value="kottah">Kottah</SelectItem>
+                      <SelectItem value="kanal">Kanal</SelectItem>
+                      <SelectItem value="grounds">Grounds</SelectItem>
+                      <SelectItem value="ares">Ares</SelectItem>
+                      <SelectItem value="biswa">Biswa</SelectItem>
+                      <SelectItem value="guntha">Guntha</SelectItem>
+                      <SelectItem value="aankadam">Aankadam</SelectItem>
+                      <SelectItem value="hectares">Hectares</SelectItem>
+                      <SelectItem value="rood">Rood</SelectItem>
+                      <SelectItem value="chataks">Chataks</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -337,9 +401,23 @@ const Sell = () => {
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="sq_ft">Sq. Ft</SelectItem>
+                      <SelectItem value="perch">Perch</SelectItem>
                       <SelectItem value="sq_yard">Sq. Yard</SelectItem>
                       <SelectItem value="sq_meter">Sq. Meter</SelectItem>
+                      <SelectItem value="acres">Acres</SelectItem>
+                      <SelectItem value="marla">Marla</SelectItem>
+                      <SelectItem value="cents">Cents</SelectItem>
+                      <SelectItem value="bigha">Bigha</SelectItem>
+                      <SelectItem value="kottah">Kottah</SelectItem>
+                      <SelectItem value="kanal">Kanal</SelectItem>
+                      <SelectItem value="grounds">Grounds</SelectItem>
+                      <SelectItem value="ares">Ares</SelectItem>
+                      <SelectItem value="biswa">Biswa</SelectItem>
+                      <SelectItem value="guntha">Guntha</SelectItem>
+                      <SelectItem value="aankadam">Aankadam</SelectItem>
+                      <SelectItem value="hectares">Hectares</SelectItem>
+                      <SelectItem value="rood">Rood</SelectItem>
+                      <SelectItem value="chataks">Chataks</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -429,9 +507,23 @@ const Sell = () => {
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
+                      <SelectItem value="perch">Perch</SelectItem>
                       <SelectItem value="sq_yard">Sq. Yard</SelectItem>
-                      <SelectItem value="sq_ft">Sq. Ft</SelectItem>
                       <SelectItem value="sq_meter">Sq. Meter</SelectItem>
+                      <SelectItem value="acres">Acres</SelectItem>
+                      <SelectItem value="marla">Marla</SelectItem>
+                      <SelectItem value="cents">Cents</SelectItem>
+                      <SelectItem value="bigha">Bigha</SelectItem>
+                      <SelectItem value="kottah">Kottah</SelectItem>
+                      <SelectItem value="kanal">Kanal</SelectItem>
+                      <SelectItem value="grounds">Grounds</SelectItem>
+                      <SelectItem value="ares">Ares</SelectItem>
+                      <SelectItem value="biswa">Biswa</SelectItem>
+                      <SelectItem value="guntha">Guntha</SelectItem>
+                      <SelectItem value="aankadam">Aankadam</SelectItem>
+                      <SelectItem value="hectares">Hectares</SelectItem>
+                      <SelectItem value="rood">Rood</SelectItem>
+                      <SelectItem value="chataks">Chataks</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
