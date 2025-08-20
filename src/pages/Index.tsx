@@ -21,19 +21,19 @@ const Index = () => {
         
         {/* Logo and Content */}
         <div className="relative z-10 text-center text-white px-4 max-w-4xl">
-          <div className="mb-12">
+          <div className="mb-6">
             <img 
               src="/lovable-uploads/674c43b8-f787-4efc-831c-9e061904f904.png"
               alt="Mid-Land Real Estate Services"
-              className="h-96 md:h-[32rem] w-auto mx-auto mb-8 animate-fade-in drop-shadow-2xl"
+              className="h-96 md:h-[32rem] w-auto mx-auto mb-4 animate-fade-in drop-shadow-2xl"
             />
           </div>
           
-          <p className="text-lg md:text-xl font-medium mb-8 animate-fade-in text-gray-100">
+          <p className="text-lg md:text-xl font-medium mb-6 animate-fade-in text-gray-100">
             Luxury living redefined. Find your perfect home with us.
           </p>
           
-          <div className="mt-12 animate-fade-in">
+          <div className="mt-6 animate-fade-in">
             <Button size="lg" className="px-8 py-6 text-lg hover-scale" asChild>
               <Link to="/buy">Explore Properties</Link>
             </Button>
