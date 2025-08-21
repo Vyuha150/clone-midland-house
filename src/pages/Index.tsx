@@ -44,7 +44,7 @@ const Index = () => {
       {/* Featured Properties Section */}
       <div className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Featured Properties</h2>
             <p className="text-xl text-gray-600">
               Experience our most distinguished properties, handpicked for the discerning buyer
@@ -59,40 +59,84 @@ const Index = () => {
                 image: featuredProperty1,
                 title: "Luxury Villa with Pool",
                 price: "$2,850,000",
-                location: "Beverly Hills, CA"
+                location: "Beverly Hills, CA",
+                bedrooms: "4",
+                bathrooms: "3",
+                area: "3,500 sq ft",
+                features: ["Swimming Pool", "Garden", "Garage", "Security System"]
               },
               {
                 id: 2,
                 image: featuredProperty2, 
                 title: "Modern City Apartment",
                 price: "$1,250,000",
-                location: "Downtown, NY"
+                location: "Downtown, NY",
+                bedrooms: "3",
+                bathrooms: "2",
+                area: "2,100 sq ft",
+                features: ["City View", "Gym", "Concierge", "Balcony"]
               },
               {
                 id: 3,
                 image: featuredProperty3,
                 title: "Beachfront Penthouse",
                 price: "$3,200,000",
-                location: "Malibu, CA"
+                location: "Malibu, CA",
+                bedrooms: "5",
+                bathrooms: "4",
+                area: "4,200 sq ft",
+                features: ["Ocean View", "Private Beach", "Wine Cellar", "Rooftop Terrace"]
               }
-            ].map((property) => (
-              <div key={property.id} className="bg-white rounded-lg shadow-lg overflow-hidden hover-scale">
-                <img 
-                  src={property.image} 
-                  alt={property.title}
-                  className="w-full h-48 object-cover"
-                />
+            ].map((property, index) => (
+              <div key={property.id} className="bg-white rounded-lg shadow-lg overflow-hidden hover-scale animate-fade-in group" 
+                   style={{ animationDelay: `${index * 200}ms` }}>
+                <div className="relative overflow-hidden">
+                  <img 
+                    src={property.image} 
+                    alt={property.title}
+                    className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute top-4 right-4">
+                    <span className="bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">
+                      Featured
+                    </span>
+                  </div>
+                </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">{property.title}</h3>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-primary transition-colors duration-200">
+                    {property.title}
+                  </h3>
                   <p className="text-primary text-2xl font-bold mb-2">{property.price}</p>
-                  <p className="text-gray-600">{property.location}</p>
+                  <p className="text-gray-600 mb-4">{property.location}</p>
+                  
+                  <div className="flex justify-between items-center text-sm text-gray-500 mb-4">
+                    <span className="flex items-center">🛏️ {property.bedrooms} Beds</span>
+                    <span className="flex items-center">🚿 {property.bathrooms} Baths</span>
+                    <span className="flex items-center">📐 {property.area}</span>
+                  </div>
+                  
+                  <div className="mb-4">
+                    <p className="text-sm font-medium text-gray-700 mb-2">Key Features:</p>
+                    <div className="flex flex-wrap gap-1">
+                      {property.features.slice(0, 2).map((feature, idx) => (
+                        <span key={idx} className="bg-gray-100 text-gray-600 px-2 py-1 rounded text-xs">
+                          {feature}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  <Button className="w-full hover:scale-105 transition-transform duration-200">
+                    View Details
+                  </Button>
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="text-center mt-12">
-            <Button variant="outline" size="lg" asChild>
+          <div className="text-center mt-12 animate-fade-in">
+            <Button variant="outline" size="lg" className="hover:scale-105 transition-transform duration-200" asChild>
               <Link to="/buy">View All Properties</Link>
             </Button>
           </div>

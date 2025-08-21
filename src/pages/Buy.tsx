@@ -14,20 +14,20 @@ const Buy = () => {
   const [verifiedOnly, setVerifiedOnly] = useState(false);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background animate-fade-in">
       <div className="max-w-7xl mx-auto px-4 py-8">
         {/* Header */}
-        <div className="text-center mb-8">
+        <div className="text-center mb-8 animate-fade-in">
           <h1 className="text-3xl font-bold text-primary mb-4">Find Your Perfect Home</h1>
         </div>
 
         {/* Search Bar */}
-        <div className="mb-8">
+        <div className="mb-8 animate-fade-in">
           <div className="relative">
             <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
             <Input
               placeholder="Search properties..."
-              className="pl-10 h-12 text-base"
+              className="pl-10 h-12 text-base transition-all duration-200 hover:shadow-md focus:shadow-lg"
             />
           </div>
         </div>
@@ -35,34 +35,34 @@ const Buy = () => {
         {/* Filters */}
         <div className="grid grid-cols-1 md:grid-cols-5 gap-6 mb-8">
           {/* Location */}
-          <Card className="p-4">
+          <Card className="p-4 hover:shadow-lg transition-all duration-300 hover:scale-105 animate-fade-in" style={{ animationDelay: "100ms" }}>
             <div className="flex items-center space-x-2 mb-3">
               <MapPin className="h-4 w-4 text-primary" />
               <h3 className="font-medium">Location</h3>
             </div>
-            <Input placeholder="Enter location" />
+            <Input placeholder="Enter location" className="transition-all duration-200 hover:border-primary focus:border-primary" />
           </Card>
 
           {/* Property Type */}
-          <Card className="p-4">
+          <Card className="p-4 hover:shadow-lg transition-all duration-300 hover:scale-105 animate-fade-in" style={{ animationDelay: "200ms" }}>
             <div className="flex items-center space-x-2 mb-3">
               <Building className="h-4 w-4 text-primary" />
               <h3 className="font-medium">Property Type</h3>
             </div>
-            <Input placeholder="Select type" />
+            <Input placeholder="Select type" className="transition-all duration-200 hover:border-primary focus:border-primary" />
           </Card>
 
           {/* BHK */}
-          <Card className="p-4">
+          <Card className="p-4 hover:shadow-lg transition-all duration-300 hover:scale-105 animate-fade-in" style={{ animationDelay: "300ms" }}>
             <div className="flex items-center space-x-2 mb-3">
               <Bed className="h-4 w-4 text-primary" />
               <h3 className="font-medium">BHK</h3>
             </div>
-            <Input placeholder="Select BHK" />
+            <Input placeholder="Select BHK" className="transition-all duration-200 hover:border-primary focus:border-primary" />
           </Card>
 
           {/* Area */}
-          <Card className="p-4">
+          <Card className="p-4 hover:shadow-lg transition-all duration-300 hover:scale-105 animate-fade-in" style={{ animationDelay: "400ms" }}>
             <div className="flex items-center space-x-2 mb-3">
               <Square className="h-4 w-4 text-primary" />
               <h3 className="font-medium">Area (sq.ft)</h3>
@@ -70,15 +70,15 @@ const Buy = () => {
             <div className="space-y-2">
               {["0-500", "500-1000", "1000-1500", "1500-2000", "2000+"].map((range) => (
                 <div key={range} className="flex items-center space-x-2">
-                  <Checkbox id={range} />
-                  <label htmlFor={range} className="text-sm">{range}</label>
+                  <Checkbox id={range} className="transition-all duration-200 hover:scale-110" />
+                  <label htmlFor={range} className="text-sm cursor-pointer hover:text-primary transition-colors duration-200">{range}</label>
                 </div>
               ))}
             </div>
           </Card>
 
           {/* Price Range */}
-          <Card className="p-4">
+          <Card className="p-4 hover:shadow-lg transition-all duration-300 hover:scale-105 animate-fade-in" style={{ animationDelay: "500ms" }}>
             <div className="flex items-center space-x-2 mb-3">
               <DollarSign className="h-4 w-4 text-primary" />
               <h3 className="font-medium">Price Range</h3>

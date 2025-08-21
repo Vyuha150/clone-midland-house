@@ -35,7 +35,7 @@ const Navigation = () => {
               <Link
                 key={item.name}
                 to={item.path}
-                className={`text-sm font-medium transition-colors hover:text-primary ${
+                className={`text-sm font-medium transition-all duration-300 hover:text-primary hover:scale-105 hover:-translate-y-1 ${
                   isActive(item.path)
                     ? "text-primary border-b-2 border-primary"
                     : "text-gray-600"
@@ -46,13 +46,16 @@ const Navigation = () => {
             ))}
           </div>
 
-          {/* Auth Buttons */}
+          {/* Auth & Admin Buttons */}
           <div className="flex items-center space-x-4">
-            <Button variant="outline" size="sm" asChild>
+            <Button variant="outline" size="sm" className="hover:scale-105 transition-transform duration-200" asChild>
               <Link to="/login">Login</Link>
             </Button>
-            <Button size="sm" asChild>
+            <Button size="sm" className="hover:scale-105 transition-transform duration-200" asChild>
               <Link to="/register">Register</Link>
+            </Button>
+            <Button variant="secondary" size="sm" className="hover:scale-105 transition-transform duration-200 bg-gradient-to-r from-primary to-blue-600 text-white hover:from-primary/90 hover:to-blue-600/90" asChild>
+              <Link to="/admin">Admin Panel</Link>
             </Button>
           </div>
         </div>
