@@ -1,5 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/context/useAuth";
+import { api } from "@/lib/api";
 
 const Navigation = () => {
   const location = useLocation();
@@ -47,21 +49,67 @@ const Navigation = () => {
           </div>
 
           {/* Auth & Admin Buttons */}
-          <div className="flex items-center space-x-4">
-            <Button variant="outline" size="sm" className="hover:scale-105 transition-transform duration-200" asChild>
-              <Link to="/login">Login</Link>
-            </Button>
-            <Button size="sm" className="hover:scale-105 transition-transform duration-200" asChild>
-              <Link to="/register">Register</Link>
-            </Button>
-            <Button variant="secondary" size="sm" className="hover:scale-105 transition-transform duration-200 bg-gradient-to-r from-primary to-blue-600 text-white hover:from-primary/90 hover:to-blue-600/90" asChild>
-              <Link to="/admin">Admin Panel</Link>
-            </Button>
-          </div>
+          <AuthButtons />
         </div>
       </div>
     </nav>
   );
 };
+
+function AuthButtons() {
+  const { user, refresh } = useAuth();
+
+  const handleSignOut = async () => {
+    await fetch(api("/api/auth/signout"), {
+      method: "POST",
+      credentials: "include",
+    });
+    await refresh();
+    window.location.href = "/";
+  };
+
+  return (
+    <div className="flex items-center space-x-4">
+      {user ? (
+        <div className="flex items-center space-x-2">
+          <Button size="sm" variant="outline" className="px-3 py-1">
+            <Link to="/profile">{user.name || user.email}</Link>
+          </Button>
+          <Button size="sm" variant="ghost" onClick={handleSignOut}>
+            Sign out
+          </Button>
+        </div>
+      ) : (
+        <>
+          <Button
+            variant="outline"
+            size="sm"
+            className="hover:scale-105 transition-transform duration-200"
+            asChild
+          >
+            <Link to="/login">Login</Link>
+          </Button>
+          <Button
+            size="sm"
+            className="hover:scale-105 transition-transform duration-200"
+            asChild
+          >
+            <Link to="/register">Register</Link>
+          </Button>
+        </>
+      )}
+      {user && user.role === "admin" && (
+        <Button
+          variant="secondary"
+          size="sm"
+          className="hover:scale-105 transition-transform duration-200 bg-gradient-to-r from-primary to-blue-600 text-white hover:from-primary/90 hover:to-blue-600/90"
+          asChild
+        >
+          <Link to="/admin">Admin Panel</Link>
+        </Button>
+      )}
+    </div>
+  );
+}
 
 export default Navigation;

@@ -4,32 +4,38 @@ import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
+import { api } from "@/lib/api";
 
 const Register = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
-    confirmPassword: ""
+    confirmPassword: "",
   });
   const { toast } = useToast();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    if (!formData.name.trim() || !formData.email.trim() || !formData.password.trim() || !formData.confirmPassword.trim()) {
+
+    if (
+      !formData.name.trim() ||
+      !formData.email.trim() ||
+      !formData.password.trim() ||
+      !formData.confirmPassword.trim()
+    ) {
       toast({
         title: "Error",
         description: "Please fill in all fields",
-        variant: "destructive"
+        variant: "destructive",
       });
       return;
     }
@@ -38,23 +44,35 @@ const Register = () => {
       toast({
         title: "Error",
         description: "Passwords do not match",
-        variant: "destructive"
+        variant: "destructive",
       });
       return;
     }
 
-    // Simulate registration
-    toast({
-      title: "Registration Successful",
-      description: "Your account has been created successfully!",
-    });
-
-    setFormData({
-      name: "",
-      email: "",
-      password: "",
-      confirmPassword: ""
-    });
+    // Request OTP for signup then navigate to verify page
+    try {
+      const res = await fetch(api("/api/auth/request-otp"), {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: formData.email }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.message || "Failed to request OTP");
+      // navigate to verify page with email prefilled
+      window.location.href = `/verify-otp?email=${encodeURIComponent(
+        formData.email
+      )}`;
+    } catch (err: unknown) {
+      const message =
+        err && typeof err === "object" && "message" in err
+          ? (err as { message?: string }).message
+          : "Failed";
+      toast({
+        title: "Error",
+        description: message || "Failed",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
@@ -62,15 +80,16 @@ const Register = () => {
       <Card className="w-full max-w-md p-8">
         <div className="text-center mb-8">
           <h1 className="text-2xl font-bold text-foreground">Register</h1>
-          <p className="text-muted-foreground mt-2">
-            Create a new account
-          </p>
+          <p className="text-muted-foreground mt-2">Create a new account</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Name */}
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+            <label
+              htmlFor="name"
+              className="block text-sm font-medium text-foreground mb-2"
+            >
               Full Name
             </label>
             <Input
@@ -86,7 +105,10 @@ const Register = () => {
 
           {/* Email */}
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-foreground mb-2"
+            >
               Email
             </label>
             <Input
@@ -102,7 +124,10 @@ const Register = () => {
 
           {/* Password */}
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-foreground mb-2">
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-foreground mb-2"
+            >
               Password
             </label>
             <Input
@@ -118,7 +143,10 @@ const Register = () => {
 
           {/* Confirm Password */}
           <div>
-            <label htmlFor="confirmPassword" className="block text-sm font-medium text-foreground mb-2">
+            <label
+              htmlFor="confirmPassword"
+              className="block text-sm font-medium text-foreground mb-2"
+            >
               Confirm Password
             </label>
             <Input
@@ -143,6 +171,14 @@ const Register = () => {
               Already have an account?{" "}
               <Link to="/login" className="text-primary hover:underline">
                 Login here
+              </Link>
+            </p>
+            <p className="text-sm mt-2">
+              <Link
+                to="/forgot-password"
+                className="text-primary hover:underline"
+              >
+                Forgot password?
               </Link>
             </p>
           </div>
