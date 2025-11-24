@@ -91,7 +91,7 @@ const Index = () => {
         <div className="relative z-10 text-center text-white px-4 max-w-4xl">
           <div className="mb-0">
             <img
-              src="/lovable-uploads/674c43b8-f787-4efc-831c-9e061904f904.png"
+              src="src/assets/logo.png"
               alt="Mid-Land Real Estate Services"
               className="h-96 md:h-[32rem] w-auto mx-auto mb-0 animate-fade-in drop-shadow-2xl"
             />
