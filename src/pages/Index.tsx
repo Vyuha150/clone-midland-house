@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
 import { MapPin, Bed, Bath, Square, Home, Eye } from "lucide-react";
 import heroBackground from "@/assets/hero-background.jpg";
+import logo from "@/assets/logo.png";
 import { api } from "@/lib/api";
 
 type Property = {
@@ -91,7 +92,7 @@ const Index = () => {
         <div className="relative z-10 text-center text-white px-4 max-w-4xl">
           <div className="mb-0">
             <img
-              src="src/assets/logo.png"
+              src={logo}
               alt="Mid-Land Real Estate Services"
               className="h-96 md:h-[32rem] w-auto mx-auto mb-0 animate-fade-in drop-shadow-2xl"
             />
